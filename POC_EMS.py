@@ -11,10 +11,6 @@ from langchain_core.prompts import ChatPromptTemplate
 # 1. Carrega variáveis de ambiente
 load_dotenv()
 
-# 2. Diretórios e arquivos
-# pdf_dir = "C:\\Users\\loren\\Documents\\PSW_local\\Clientes\\EMS\\Bulas"
-# csv_path = "C:\\Users\\loren\\Documents\\PSW_local\\Clientes\\EMS\\Venda\\Venda Medicamentos Novo.csv"
-
 pdf_dir = "data/pdfs"
 csv_path = "data/Venda Medicamentos Novo.csv"
 
@@ -29,7 +25,7 @@ vector_store = InMemoryVectorStore(embeddings)
 llm = ChatOpenAI(model="gpt-4", temperature=0.4)
 
 # 5. Splitter
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200, add_start_index=True)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50, add_start_index=True)
 
 # 6. Carregamento dos PDFs
 medicamentos_disponiveis = set()
