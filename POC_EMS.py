@@ -12,8 +12,11 @@ from langchain_core.prompts import ChatPromptTemplate
 load_dotenv()
 
 # 2. Diretórios e arquivos
-pdf_dir = "C:\\Users\\loren\\Documents\\PSW_local\\Clientes\\EMS\\Bulas"
-csv_path = "C:\\Users\\loren\\Documents\\PSW_local\\Clientes\\EMS\\Venda\\Venda Medicamentos Novo.csv"
+# pdf_dir = "C:\\Users\\loren\\Documents\\PSW_local\\Clientes\\EMS\\Bulas"
+# csv_path = "C:\\Users\\loren\\Documents\\PSW_local\\Clientes\\EMS\\Venda\\Venda Medicamentos Novo.csv"
+
+pdf_dir = "data/pdfs"
+csv_path = "data/Venda Medicamentos Novo.csv"
 
 # 3. Carrega dados de vendas
 df_venda = pd.read_csv(csv_path, dtype={"Medicamento": str}, decimal=',')
