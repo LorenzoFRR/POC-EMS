@@ -46,7 +46,13 @@ for file_name in os.listdir(pdf_dir):
         for split in splits:
             split.metadata["Medicamento"] = medicamento
 
-        vector_store.add_documents(splits)
+        # vector_store.add_documents(splits)
+
+        try:
+            vector_store.add_documents(splits)
+        except Exception as e:
+            st.warning(f"Falha ao adicionar documentos ao vector_store: {e}")
+    
 
 # 7. Cria prompt template
 prompt = ChatPromptTemplate.from_template(
