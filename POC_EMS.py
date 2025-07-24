@@ -25,7 +25,7 @@ vector_store = InMemoryVectorStore(embeddings)
 llm = ChatOpenAI(model="gpt-4", temperature=0.4)
 
 # 5. Splitter
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50, add_start_index=True)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200, add_start_index=True)
 
 # 6. Carregamento dos PDFs
 medicamentos_disponiveis = set()
@@ -46,13 +46,10 @@ for file_name in os.listdir(pdf_dir):
         for split in splits:
             split.metadata["Medicamento"] = medicamento
 
-        # vector_store.add_documents(splits)
+        vector_store.add_documents(splits)
 
-        try:
-            vector_store.add_documents(splits)
-        except Exception as e:
-            st.warning(f"Falha ao adicionar documentos ao vector_store: {e}")
-    
+
+
 
 # 7. Cria prompt template
 prompt = ChatPromptTemplate.from_template(
